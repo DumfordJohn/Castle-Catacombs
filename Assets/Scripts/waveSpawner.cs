@@ -17,7 +17,7 @@ public class waveSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(prefab, -transform.position, transform.rotation);
+        Instantiate(prefab, transform.position, transform.rotation);
     }
 
     // Update is called once per frame

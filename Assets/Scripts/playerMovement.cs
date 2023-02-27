@@ -50,7 +50,7 @@ public class playerMovement : MonoBehaviour
         if (c.transform.localRotation.eulerAngles.y > rotationMin && c.transform.localRotation.eulerAngles.y < rotationMax)
         {
             float mouseY = Input.GetAxis("Mouse Y");
-            c.transform.Rotate(mouseY * rotationSpeed * Time.deltaTime, 0, 0);
+            c.transform.Rotate(-mouseY * rotationSpeed * Time.deltaTime, 0, 0);
         }
     }
 }
