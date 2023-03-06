@@ -7,6 +7,7 @@ public class playerShooting : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject shootPoint;
+    public Animation reload;
     public float magSize;
 
     // Update is called once per frame
@@ -23,6 +24,8 @@ public class playerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            magSize = 5;        }
+            reload.Play("Reload");
+            magSize = 5;      
+        }
     }
 }
