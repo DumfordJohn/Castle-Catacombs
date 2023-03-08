@@ -11,6 +11,7 @@ public class contactDamager : MonoBehaviour
         Destroy(gameObject);
 
         Life life = other.GetComponent<Life>();
+
         if (life != null)
         {
             life.amount -= damage;
