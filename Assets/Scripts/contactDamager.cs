@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class contactDamager : MonoBehaviour
+public class ContactDamager : MonoBehaviour
 {
     public float damage;
     // Start is called before the first frame update
-    void OnTriggerEnter(Collider other)
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
 
