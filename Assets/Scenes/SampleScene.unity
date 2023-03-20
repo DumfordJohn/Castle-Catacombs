@@ -4414,6 +4414,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1048743593}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1079510147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079510148}
+  m_Layer: 0
+  m_Name: shootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1079510148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079510147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.121, z: 0.678}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1313837233}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1097829884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5393,7 +5424,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1360719778}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1313837234
+--- !u!114 &1313837237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5402,9 +5433,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313837230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1453ba331f0052458a41450e0ef0ba2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f9b01d946454ef47bb646390b8e304f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 2302360421451875920, guid: b625f768a5a18ed4fa9cea067a929891, type: 3}
+  shootForce: 1
+  upwardsForce: 0
+  timeBetweenShooting: 0
+  spread: 0
+  reloadTime: 1
+  timeBetweenShots: 1
+  magazineSize: 10
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  fpsCam: {fileID: 330585545}
+  attackPoint: {fileID: 1079510148}
+  MuzzleFlash: {fileID: 0}
+  ammunitionDisplay: {fileID: 0}
+  allowInvoke: 1
+--- !u!95 &1313837238
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313837230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3f73d0e059aea040901a2cdfcd4c813, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1320885165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5713,12 +5779,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 453068, guid: a4e476a037022df448ead5d0ceea7d06,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1079510148}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1313837234}
+      addedObject: {fileID: 1313837237}
+    - targetCorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313837238}
   m_SourcePrefab: {fileID: 100100000, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
 --- !u!1001 &1367480677
 PrefabInstance:
@@ -7945,7 +8019,6 @@ GameObject:
   - component: {fileID: 2100733410}
   - component: {fileID: 2100733415}
   - component: {fileID: 2100733414}
-  - component: {fileID: 2100733416}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8088,21 +8161,6 @@ MonoBehaviour:
   rotationMax: 80
   c: {fileID: 330585543}
   p: {fileID: 2100733409}
---- !u!114 &2100733416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100733409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb3d59f011a5e64c9998989978e3edd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 2302360421451875920, guid: b625f768a5a18ed4fa9cea067a929891, type: 3}
-  shootPoint: {fileID: 1313837230}
-  magSize: 5
 --- !u!1001 &2125786493
 PrefabInstance:
   m_ObjectHideFlags: 0
