@@ -2,13 +2,21 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
+using Input = UnityEngine.Input;
 
 public class playerShooting : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject shootPoint;
-    public Animation reload;
+    public GameObject gun;
+    public Animator reloadAnim;
     public float magSize;
+
+    void Start()
+    {
+        reloadAnim = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,8 +32,8 @@ public class playerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            reload.Play("Reload");
-            magSize = 5;      
+            reloadAnim.Play("reload");
+            magSize = 5;
         }
     }
 }
