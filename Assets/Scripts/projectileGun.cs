@@ -30,7 +30,7 @@ public class projectileGun : MonoBehaviour
     public TextMeshProUGUI ammunitionDisplay;
 
     //Animator
-    Animator animator;
+    public Animator animator;
 
     //bug fixing
     public bool allowInvoke = true;
@@ -40,8 +40,6 @@ public class projectileGun : MonoBehaviour
         //make sure magazin is full
         bulletsLeft = magazineSize;
         readyToShoot = true;
-
-        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -70,6 +68,8 @@ public class projectileGun : MonoBehaviour
             bulletsShot = 0;
 
             Shoot();
+            animator.SetTrigger("recoil");
+            animator.SetTrigger("recoil");
         }
     }
 
@@ -109,7 +109,7 @@ public class projectileGun : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardsForce, ForceMode.Impulse);
 
         //Instantiate muzzle flash, if you have one
-        if (MuzzleFlash !=null)
+        if (MuzzleFlash != null)
             Instantiate(MuzzleFlash, attackPoint.position, Quaternion.identity);
 
         bulletsLeft--;

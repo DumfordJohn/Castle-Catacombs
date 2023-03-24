@@ -1287,6 +1287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
+  rotationMin: -80
+  rotationMax: 80
   c: {fileID: 330585543}
 --- !u!1001 &404522794
 PrefabInstance:
@@ -3733,6 +3735,116 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1182184188}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &1189399539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189399540}
+  m_Layer: 0
+  m_Name: shootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189399540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189399539}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.005499959, y: 0.12550002, z: 0.6945001}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1313837233}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1199684804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199684805}
+  - component: {fileID: 1199684807}
+  - component: {fileID: 1199684806}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1199684805
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199684804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.4198573, y: 2.6496873, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1620510532}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1199684806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199684804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 78e3daf76621d66448e594d6993adbd8, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 10
+--- !u!222 &1199684807
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199684804}
+  m_CullTransparentMesh: 1
+>>>>>>> Stashed changes
 --- !u!1001 &1243027444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4160,6 +4272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2302360421451875920, guid: b625f768a5a18ed4fa9cea067a929891, type: 3}
+<<<<<<< Updated upstream
   shootForce: 1
   upwardsForce: 0
   timeBetweenShooting: 0
@@ -4173,6 +4286,22 @@ MonoBehaviour:
   attackPoint: {fileID: 1079510148}
   MuzzleFlash: {fileID: 0}
   ammunitionDisplay: {fileID: 0}
+=======
+  shootForce: 40
+  upwardsForce: 0
+  timeBetweenShooting: 0
+  spread: 0
+  reloadTime: 5
+  timeBetweenShots: 1
+  magazineSize: 30
+  bulletsPerTap: 1
+  allowButtonHold: 0
+  fpsCam: {fileID: 330585545}
+  attackPoint: {fileID: 1189399540}
+  MuzzleFlash: {fileID: 0}
+  ammunitionDisplay: {fileID: 713528236}
+  animator: {fileID: 1313837238}
+>>>>>>> Stashed changes
   allowInvoke: 1
 --- !u!95 &1313837238
 Animator:
@@ -4184,7 +4313,11 @@ Animator:
   m_GameObject: {fileID: 1313837230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< Updated upstream
   m_Controller: {fileID: 9100000, guid: f3f73d0e059aea040901a2cdfcd4c813, type: 2}
+=======
+  m_Controller: {fileID: 9100000, guid: 33d87e3042fb44f469606ae4bdc2caab, type: 2}
+>>>>>>> Stashed changes
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4506,7 +4639,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 453068, guid: a4e476a037022df448ead5d0ceea7d06,
         type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 1079510148}
+=======
+      addedObject: {fileID: 1189399540}
+>>>>>>> Stashed changes
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
         type: 3}
@@ -6167,8 +6304,6 @@ MonoBehaviour:
   speed: 10
   jumpHight: 250
   rotationSpeed: 100
-  rotationMin: -80
-  rotationMax: 80
   c: {fileID: 330585543}
   p: {fileID: 2100733409}
 --- !u!1001 &2125786493
