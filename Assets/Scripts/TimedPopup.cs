@@ -7,8 +7,12 @@ public class TimedPopup : MonoBehaviour
     public float after = 5.0f;
 
     void Start()
-    { Invoke("Disable", after); }
+    { 
+        Invoke("Disable", after);
+    }
 
     void Disable()
-    { gameObject.SetActive(false); }
+    { 
+        gameObject.SetActive(false);
+    }
 }
