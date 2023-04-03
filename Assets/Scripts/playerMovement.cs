@@ -7,8 +7,8 @@ public class playerMovement : MonoBehaviour
     public float speed;
     public float jumpHight;
     public float rotationSpeed;
-    public float rotationMin;
-    public float rotationMax;
+    //public float rotationMin;
+    //public float rotationMax;
     public GameObject c;
     public GameObject p;
     // Update is called once per frame
@@ -47,10 +47,10 @@ public class playerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         p.transform.Rotate(0, mouseX * rotationSpeed * Time.deltaTime, 0);
 
-        if (c.transform.localRotation.eulerAngles.y > rotationMin && c.transform.localRotation.eulerAngles.y < rotationMax)
-        {
-            float mouseY = Input.GetAxis("Mouse Y");
-            c.transform.Rotate(-mouseY * rotationSpeed * Time.deltaTime, 0, 0);
-        }
+        //if (c.transform.localRotation.eulerAngles.y > rotationMin && c.transform.localRotation.eulerAngles.y < rotationMax)
+        //{
+            //float mouseY = Input.GetAxis("Mouse Y");
+            //c.transform.Rotate(-mouseY * rotationSpeed * Time.deltaTime, 0, 0);
+        //}
     }
 }
