@@ -12,7 +12,7 @@ public class projectileGun : MonoBehaviour
     public float shootForce, upwardsForce;
 
     //Gun stats
-    public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
+    public float timeBetweenShooting, spread, reloadTime, emptyReloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
 
@@ -30,7 +30,7 @@ public class projectileGun : MonoBehaviour
     public TextMeshProUGUI ammunitionDisplay;
 
     //Animator
-    Animator animator;
+    public Animator animator;
 
     //bug fixing
     public bool allowInvoke = true;
@@ -59,9 +59,23 @@ public class projectileGun : MonoBehaviour
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
         //Reloading
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && bulletsLeft > 0)
+        {
+            Reload();
+            animator.SetTrigger("reload");
+        }
+        //Reloading with 0 bullets
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft == 0 && !reloading)
+        {
+            EmptyReload();
+            animator.SetTrigger("emptyReload");
+        }
         //Reload automatically when trying to shoot without ammo
-        if (readyToShoot && shooting && !reloading && bulletsLeft <= 0) Reload();
+        if (readyToShoot && shooting && !reloading && bulletsLeft <= 0)
+        {
+            EmptyReload();
+            animator.SetTrigger("emptyReload");
+        }
 
         //Shooting
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
@@ -70,6 +84,7 @@ public class projectileGun : MonoBehaviour
             bulletsShot = 0;
 
             Shoot();
+            animator.SetTrigger("recoil");
         }
     }
 
@@ -137,6 +152,12 @@ public class projectileGun : MonoBehaviour
     {
         reloading = true;
         Invoke("ReloadFinished", reloadTime);
+    }
+
+    private void EmptyReload()
+    {
+        reloading = true;
+        Invoke("ReloadFinished", emptyReloadTime);
     }
 
     private void ReloadFinished()

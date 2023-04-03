@@ -2934,6 +2934,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3059,6 +3060,20 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adee9874e1ae4ca4cb57b6c3ba6ce772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 100
+  maxYAngle: 80
 --- !u!1001 &346374192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10856,7 +10871,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 836038442}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430702906}
+    - targetCorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430702905}
   m_SourcePrefab: {fileID: 100100000, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
 --- !u!1001 &1362868066
 PrefabInstance:
@@ -11518,6 +11541,61 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1423287410}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1430702902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06,
+    type: 3}
+  m_PrefabInstance: {fileID: 1360719778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1430702905
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430702902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56ad1c9244ba0e243923daa200a52570, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1430702906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430702902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b01d946454ef47bb646390b8e304f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2302360421451875920, guid: b625f768a5a18ed4fa9cea067a929891, type: 3}
+  shootForce: 100
+  upwardsForce: 0
+  timeBetweenShooting: 0.75
+  spread: 0
+  reloadTime: 1
+  emptyReloadTime: 2
+  timeBetweenShots: 0
+  magazineSize: 15
+  bulletsPerTap: 0
+  allowButtonHold: 1
+  fpsCam: {fileID: 330585545}
+  attackPoint: {fileID: 836038442}
+  MuzzleFlash: {fileID: 0}
+  ammunitionDisplay: {fileID: 2136104503}
+  animator: {fileID: 1430702905}
+  allowInvoke: 1
 --- !u!1001 &1430782691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16447,8 +16525,6 @@ MonoBehaviour:
   speed: 10
   jumpHight: 250
   rotationSpeed: 100
-  rotationMin: 0
-  rotationMax: 90
   c: {fileID: 330585543}
   p: {fileID: 2100733409}
 --- !u!82 &2100733417
@@ -16685,7 +16761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ammo Count
+  m_text: 15/15
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 788b0d5cc90b593419b09e4aa3e6e4a7, type: 2}
   m_sharedMaterial: {fileID: -7339938473322897332, guid: 788b0d5cc90b593419b09e4aa3e6e4a7,
