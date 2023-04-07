@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContactDestroyer : MonoBehaviour
+public class scoreScript : MonoBehaviour
 {
+    public float scoreVal = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +15,5 @@ public class ContactDestroyer : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
     }
 }

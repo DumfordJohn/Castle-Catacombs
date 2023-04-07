@@ -6,7 +6,7 @@ using UnityEngine;
 public class projectileGun : MonoBehaviour
 {
     //bullet
-    public GameObject playerBullet;
+    public GameObject bullet;
 
     //bullet force
     public float shootForce, upwardsForce;
@@ -114,7 +114,7 @@ public class projectileGun : MonoBehaviour
         Vector3 directionWithSpread = directionWithoutSpread + new Vector3(x, y, 0); //Just add spread to last direction
 
         //Instantiate bullet/projectile
-        GameObject currentBullet = Instantiate(playerBullet, attackPoint.position, Quaternion.identity); //store instant
+        GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity); //store instant
 
         //Rotate bullet to shoot direction
         currentBullet.transform.forward = directionWithSpread.normalized;
