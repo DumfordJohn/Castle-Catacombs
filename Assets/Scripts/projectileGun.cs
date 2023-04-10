@@ -124,7 +124,7 @@ public class projectileGun : MonoBehaviour
         currentBullet.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardsForce, ForceMode.Impulse);
 
         //Instantiate muzzle flash, if you have one
-        if (MuzzleFlash !=null)
+        if (MuzzleFlash != null)
             Instantiate(MuzzleFlash, attackPoint.position, Quaternion.identity);
 
         bulletsLeft--;
