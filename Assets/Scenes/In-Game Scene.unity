@@ -20010,8 +20010,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpHight: 250
+  jumpHight: 5
   rotationSpeed: 100
+  groundCheckDistance: 1.05
+  jumpCooldown: 0.5
   c: {fileID: 330585543}
   p: {fileID: 2100733409}
 --- !u!82 &2100733417
