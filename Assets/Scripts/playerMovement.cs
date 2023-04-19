@@ -7,11 +7,13 @@ public class playerMovement : MonoBehaviour
     public float speed;
     public float jumpHight;
     public float rotationSpeed;
-    //public float rotationMin;
-    //public float rotationMax;
+    public float groundCheckDistance = 1.05f;
+    private float distanceToGround;
+    public float jumpCooldown = 0.5f; // Time in seconds before the player can jump again
+    private float lastJumpTime; // Time when the player last jumped
+    private bool isGrounded;
     public GameObject c;
     public GameObject p;
-    // Update is called once per frame
 
     private void Start()
     {
@@ -36,21 +38,28 @@ public class playerMovement : MonoBehaviour
         {
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKeyDown (KeyCode.Space)) 
-        { 
-            if (transform.position.y <= 1.05)
+
+
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && (Time.time - lastJumpTime) > jumpCooldown)
+        {
+            // Get the distance to the ground
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
             {
-                GetComponent<Rigidbody>().AddForce (Vector3.up * jumpHight);
-            }    
+                distanceToGround = hit.distance;
+            }
+
+            // Perform the jump
+            if (distanceToGround <= groundCheckDistance)
+            {
+                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpHight, ForceMode.Impulse);
+                lastJumpTime = Time.time;
+            }
         }
 
         float mouseX = Input.GetAxis("Mouse X");
         p.transform.Rotate(0, mouseX * rotationSpeed * Time.deltaTime, 0);
-
-        //if (c.transform.localRotation.eulerAngles.y > rotationMin && c.transform.localRotation.eulerAngles.y < rotationMax)
-        //{
-            //float mouseY = Input.GetAxis("Mouse Y");
-            //c.transform.Rotate(-mouseY * rotationSpeed * Time.deltaTime, 0, 0);
-        //}
     }
 }
