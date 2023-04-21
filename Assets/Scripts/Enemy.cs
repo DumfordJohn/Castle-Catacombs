@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scoreScript : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public float scoreVal = 10;
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemiesManager.instance.enemies.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        EnemiesManager.instance.enemies.Remove(this);
     }
 
     // Update is called once per frame
