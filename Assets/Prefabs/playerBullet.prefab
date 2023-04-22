@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4622230057317548411}
   - component: {fileID: 985936016606276711}
   - component: {fileID: 6868920771354342179}
-  - component: {fileID: -215610567207440249}
+  - component: {fileID: -790092445891155570}
   m_Layer: 0
   m_Name: playerBullet
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-215610567207440249
+--- !u!114 &-790092445891155570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

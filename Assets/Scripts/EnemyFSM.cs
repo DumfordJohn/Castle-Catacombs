@@ -12,11 +12,15 @@ public class EnemyFSM : MonoBehaviour
     public float baseAttackDistance;
     public float playerAttackDistance;
     public Animator animator;
+    public GameObject prefab;
+    public GameObject shootPoint;
+    bool AlreadyAttacked;
+    public float timeBetweenAttacks;
+
     // Update is called once per frame
     void Update()
     {
         if (currentState == EnemyState.GoToBase) { GoToBase(); }
-        else if (currentState == EnemyState.AttackBase) { AttackBase(); }
         else if (currentState == EnemyState.ChasePlayer) { ChasePlayer(); }
         else { AttackPlayer(); }
     }
@@ -24,6 +28,7 @@ public class EnemyFSM : MonoBehaviour
     void GoToBase() 
     {
         agent.SetDestination(baseTransform.position);
+        animator.SetBool("Attack", false);
         agent.isStopped = false;
         print("GoToBase");
         if(sightSensor.detectedObject != null)
@@ -38,13 +43,6 @@ public class EnemyFSM : MonoBehaviour
             currentState = EnemyState.AttackBase;            
         }
     }
-    void AttackBase() 
-    {
-        print("AttackBase");
-        agent.isStopped = true;
-        LookTo(baseTransform.position);
-        Shoot();
-    }
 
     void LookTo(Vector3 targetPosition)
     {
@@ -55,12 +53,29 @@ public class EnemyFSM : MonoBehaviour
 
     void Shoot()
     {
-
+        if(!AlreadyAttacked)
+        {
+            AlreadyAttacked = false;
+            animator.SetBool("Attack", true);
+            Instantiate(prefab, transform.position, transform.rotation);
+            GameObject clone = Instantiate(prefab);
+            clone.transform.position = shootPoint.transform.position;
+            clone.transform.rotation = shootPoint.transform.rotation;
+            AlreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
     }
+
+    void ResetAttack()
+    {
+        AlreadyAttacked = false;
+    }
+
     void ChasePlayer() 
     { 
         print("ChasePlayer");
         agent.isStopped = false;
+        animator.SetBool("Attack", false);
         if (sightSensor.detectedObject == null)
         {
             currentState = EnemyState.GoToBase;
@@ -76,7 +91,7 @@ public class EnemyFSM : MonoBehaviour
 
         agent.SetDestination(sightSensor.detectedObject.transform.position);
 
-        animator.SetTrigger("Walk");
+
     }
     void AttackPlayer() 
     { 
@@ -97,7 +112,6 @@ public class EnemyFSM : MonoBehaviour
             currentState = EnemyState.ChasePlayer;
         }
 
-        animator.SetTrigger("Attack");
     }
     private void OnDrawGizmos()
     {
@@ -114,6 +128,6 @@ public class EnemyFSM : MonoBehaviour
     {
         baseTransform = GameObject.Find("BaseDamagePoint").transform;
         agent = GetComponentInParent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInParent<Animator>();
     }
 }
