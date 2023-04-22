@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Sight : MonoBehaviour
@@ -9,7 +10,7 @@ public class Sight : MonoBehaviour
     public LayerMask objectsLayers;
     public LayerMask obstaclesLayers;
     public Collider detectedObject;
-    // Update is called once per frame
+
     private void Update()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, distance, (int)objectsLayers);
@@ -23,7 +24,7 @@ public class Sight : MonoBehaviour
 
             float angleToCollider = Vector3.Angle(transform.forward, directionToController);
 
-            if (angleToCollider < angle) 
+            if (angleToCollider < angle)
             {
                 if (!Physics.Linecast(transform.position, collider.bounds.center, (int)obstaclesLayers))
                 {
@@ -32,5 +33,17 @@ public class Sight : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, distance);
+
+        Vector3 rightDirection = Quaternion.Euler(0, angle, 0) * transform.forward;
+        Gizmos.DrawRay(transform.position, rightDirection * distance);
+
+        Vector3 leftDirection = Quaternion.Euler(0, -angle, 0) * transform.forward;
+        Gizmos.DrawRay(transform.position, leftDirection * distance);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
@@ -21,7 +22,9 @@ public class EnemyFSM : MonoBehaviour
     }
 
     void GoToBase() 
-    { 
+    {
+        agent.SetDestination(baseTransform.position);
+        agent.isStopped = false;
         print("GoToBase");
         if(sightSensor.detectedObject != null)
         {
@@ -35,10 +38,29 @@ public class EnemyFSM : MonoBehaviour
             currentState = EnemyState.AttackBase;            
         }
     }
-    void AttackBase() { print("AttackBase"); }
+    void AttackBase() 
+    {
+        print("AttackBase");
+        agent.isStopped = true;
+        LookTo(baseTransform.position);
+        Shoot();
+    }
+
+    void LookTo(Vector3 targetPosition)
+    {
+        Vector3 directionToPosition = Vector3.Normalize(targetPosition - transform.parent.position);
+        directionToPosition.y = 0;
+        transform.parent.forward = directionToPosition;
+    }
+
+    void Shoot()
+    {
+
+    }
     void ChasePlayer() 
     { 
         print("ChasePlayer");
+        agent.isStopped = false;
         if (sightSensor.detectedObject == null)
         {
             currentState = EnemyState.GoToBase;
@@ -52,16 +74,21 @@ public class EnemyFSM : MonoBehaviour
             currentState = EnemyState.AttackPlayer;
         }
 
+        agent.SetDestination(sightSensor.detectedObject.transform.position);
+
         animator.SetTrigger("Walk");
     }
     void AttackPlayer() 
     { 
         print("AttackPlayer");
+        agent.isStopped = true;
         if (sightSensor.detectedObject == null)
         {
             currentState = EnemyState.GoToBase;
             return;
         }
+        LookTo(sightSensor.detectedObject.transform.position);
+        Shoot();
 
         float distanceToPlayer = Vector3.Distance(transform.position, sightSensor.detectedObject.transform.position);
 
@@ -81,9 +108,12 @@ public class EnemyFSM : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, baseAttackDistance);
     }
 
+    private NavMeshAgent agent;
+
     private void Awake()
     {
         baseTransform = GameObject.Find("BaseDamagePoint").transform;
+        agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
 }
