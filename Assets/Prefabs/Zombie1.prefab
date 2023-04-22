@@ -1799,7 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c553ecfdd1445b408fbe37eebbd82eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 50
+  amount: 20
 --- !u!54 &7465635725431239930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1846,10 +1846,10 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.67621684
+  m_Radius: 0.70770335
   m_Height: 1.9401362
   m_Direction: 1
-  m_Center: {x: 0.0017043352, y: 0.84160316, z: -0.023476481}
+  m_Center: {x: 0.001870513, y: 0.84160316, z: -0.023028255}
 --- !u!114 &6572368632926355744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   currentState: 0
   sightSensor: {fileID: 6056775789125457056}
   baseAttackDistance: 0
-  playerAttackDistance: 1
+  playerAttackDistance: 2
   animator: {fileID: 7389507112651452681}
   prefab: {fileID: 933104698961786761, guid: aed7942387ef3b54a99c3630885284e5, type: 3}
   shootPoint: {fileID: 6289533923214621552}
@@ -2416,7 +2416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6289533923214621552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007, y: 1.355, z: 0.229}
+  m_LocalPosition: {x: 0.007, y: 1.355, z: 0.678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
