@@ -5,14 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseQuit : MonoBehaviour
 {
-    public bool pauseQuit;
-
-    void OnMouseUp()
+    public void pauseQuit()
     {
-        if (pauseQuit)
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
     }
 
 }
